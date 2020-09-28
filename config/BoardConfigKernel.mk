@@ -53,6 +53,8 @@ KERNEL_ARCH := $(TARGET_KERNEL_ARCH)
 endif
 
 GCC_PREBUILTS := $(BUILD_TOP)/prebuilts/gcc/$(HOST_OS)-x86
+TARGET_KERNEL_HEADERS ?= $(TARGET_KERNEL_SOURCE)
+
 # arm64 toolchain
 KERNEL_TOOLCHAIN_arm64 := $(GCC_PREBUILTS)/aarch64/aarch64-linux-android-4.9/bin
 KERNEL_TOOLCHAIN_PREFIX_arm64 := aarch64-linux-android-
@@ -128,7 +130,7 @@ endif
 TOOLS_PATH_OVERRIDE := \
     PATH=$(BUILD_TOP)/prebuilts/tools-lineage/$(HOST_OS)-x86/bin:$$PATH \
     LD_LIBRARY_PATH=$(BUILD_TOP)/prebuilts/tools-lineage/$(HOST_OS)-x86/lib:$$LD_LIBRARY_PATH \
-    PERL5LIB=$(BUILD_TOP)/prebuilts/tools-lineage/common/perl-base
+    PERL5LIB=$(BUILD_TOP)/prebuilts/tools-lineage/$(HOST_OS)-x86/lib/perl-base
 
 # Set DTBO image locations so the build system knows to build them
 ifeq ($(TARGET_NEEDS_DTBOIMAGE),true)
