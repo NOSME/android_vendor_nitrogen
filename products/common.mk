@@ -134,5 +134,11 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
 # Boot animations
 $(call inherit-product-if-exists, vendor/nitrogen/products/bootanimation.mk)
 
+# Gamespace
+ifneq (,$(wildcard packages/apps/GameSpace))
+PRODUCT_PACKAGES += \
+    GameSpace
+endif
+
 # Nitrogen OTA
 #$(call inherit-product-if-exists, vendor/nitrogen/products/ota.mk)
